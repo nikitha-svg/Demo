@@ -1,0 +1,16 @@
+services:
+  safecircle:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?Set SECRET_KEY in your environment}
+      DATABASE_PATH: /data/safecircle.db
+      FRONTEND_ORIGINS: ${FRONTEND_ORIGINS:-http://localhost:8000}
+      TOKEN_TTL_SECONDS: ${TOKEN_TTL_SECONDS:-86400}
+      ADMIN_EMAILS: ${ADMIN_EMAILS:-}
+    volumes:
+      - safecircle-data:/data
+    restart: unless-stopped
+volumes:
+  safecircle-data:

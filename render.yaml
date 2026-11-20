@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: safecircle-demo
+    runtime: docker
+    plan: starter
+    healthCheckPath: /api/health
+    disk:
+      name: safecircle-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_PATH
+        value: /data/safecircle.db
+      - key: FRONTEND_ORIGINS
+        value: http://localhost:5173
+      - key: TOKEN_TTL_SECONDS
+        value: "86400"

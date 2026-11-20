@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+data/
+__pycache__/
+*.py[cod]
+tests/safecircle-test.db
+tests/safecircle-test.db-shm
+tests/safecircle-test.db-wal
